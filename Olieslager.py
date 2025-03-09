@@ -18,12 +18,25 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, Image, Space
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER
 
+kamerdata = []
+
+def processcsv(csvfile):
+    with open(file_to_open, 'r') as file:
+        csvreader = csv.reader(file, delimiter = ';')
+        count = 0
+        for row in csvreader:
+            if count > 0:
+                kamerdata.append(row)
+            count += 1
+
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Olieslager'
 if sys.platform[0] == 'w':
     path = "C:/Users/janbo/OneDrive/Documents/GitHub/Olieslager"
 os.chdir(path)
 file_to_open = "Data/Kamers.csv"
+processcsv(file_to_open)
+print(len(kamerdata))
 
 pdfmetrics.registerFont(TTFont('Ubuntu', 'Ubuntu-Regular.ttf'))
 pdfmetrics.registerFont(TTFont('UbuntuBold', 'Ubuntu-Bold.ttf'))
