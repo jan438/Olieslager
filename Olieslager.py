@@ -55,7 +55,11 @@ for i in range(len(kamers)):
     print(kamers[i].bewoner)
     
 d = Drawing(595, 842)
+d.add(Rect(5, 215, 200, 100, fillColor = colors.yellow))
+d.add(Rect(5, 110, 200, 100, fillColor = colors.yellow))
 d.add(Rect(5, 5, 200, 100, fillColor = colors.yellow))
+d.add(String(10, 220, 'Hello World', fontSize = 18, fillColor = colors.red))
+d.add(String(10, 115, 'Hello World', fontSize = 18, fillColor = colors.red))
 d.add(String(10, 10, 'Hello World', fontSize = 18, fillColor = colors.red))
 renderPDF.drawToFile(d, 'PDF/olieslager.pdf')
 
