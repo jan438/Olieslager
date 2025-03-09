@@ -20,6 +20,13 @@ from reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER
 
 kamerdata = []
 
+class Kamer:
+    def __init__(self, nummer, pad, zijde, bewoner):
+        self.nummer = nummer
+        self.pad = pad
+        self.zijde = zijde
+        self.bewoner = bewoner
+
 def processcsv(csvfile):
     with open(file_to_open, 'r') as file:
         csvreader = csv.reader(file, delimiter = ';')
@@ -34,9 +41,18 @@ if sys.platform[0] == 'l':
 if sys.platform[0] == 'w':
     path = "C:/Users/janbo/OneDrive/Documents/GitHub/Olieslager"
 os.chdir(path)
+kamers = []
 file_to_open = "Data/Kamers.csv"
 processcsv(file_to_open)
 print(len(kamerdata))
+for i in range(len(kamerdata)):
+    nummer = kamerdata[i][0]
+    pad = kamerdata[i][1]
+    zijde = kamerdata[i][2]
+    bewoner = kamerdata[i][3]
+    kamers.append(Kamer(nummer, pad, zijde, bewoner))
+for i in range(len(kamers)):
+    print(kamers[i].bewoner)
 
 pdfmetrics.registerFont(TTFont('Ubuntu', 'Ubuntu-Regular.ttf'))
 pdfmetrics.registerFont(TTFont('UbuntuBold', 'Ubuntu-Bold.ttf'))
