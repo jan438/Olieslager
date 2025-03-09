@@ -54,12 +54,10 @@ for i in range(len(kamerdata)):
 for i in range(len(kamers)):
     print(kamers[i].bewoner)
     
-
 d = Drawing(595, 842)
-d.add(Rect(50, 50, 300, 100, fillColor=colors.yellow))
-d.add(String(150,100, 'Hello World', fontSize=18, fillColor=colors.red))
-d.add(String(180,86, 'Special characters \\\\xc2\\xa2\\xc2\\xa9\\xc2\\xae\\xc2\\xa3\\xce\\xb1\\xce\\xb2', fillColor=colors.red))
-renderPDF.drawToFile(d, 'PDF/olieslager.pdf', 'Kamers')
+d.add(Rect(5, 5, 200, 100, fillColor = colors.yellow))
+d.add(String(10, 10, 'Hello World', fontSize = 18, fillColor = colors.red))
+renderPDF.drawToFile(d, 'PDF/olieslager.pdf')
 
 pdfmetrics.registerFont(TTFont('Ubuntu', 'Ubuntu-Regular.ttf'))
 pdfmetrics.registerFont(TTFont('UbuntuBold', 'Ubuntu-Bold.ttf'))
