@@ -14,9 +14,9 @@ from reportlab.lib.colors import blue, green, black, red, pink, gray, brown, pur
 from reportlab.pdfbase import pdfmetrics  
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase.pdfmetrics import registerFontFamily
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, Image, Spacer, Frame
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER
+from reportlab.graphics.shapes import *
+from reportlab.graphics import renderPDF
 
 kamerdata = []
 
@@ -53,6 +53,13 @@ for i in range(len(kamerdata)):
     kamers.append(Kamer(nummer, pad, zijde, bewoner))
 for i in range(len(kamers)):
     print(kamers[i].bewoner)
+    
+
+d = Drawing(400, 200)
+d.add(Rect(50, 50, 300, 100, fillColor=colors.yellow))
+d.add(String(150,100, 'Hello World', fontSize=18, fillColor=colors.red))
+d.add(String(180,86, 'Special characters \\\\xc2\\xa2\\xc2\\xa9\\xc2\\xae\\xc2\\xa3\\xce\\xb1\\xce\\xb2', fillColor=colors.red))
+renderPDF.drawToFile(d, 'PDF/olieslager.pdf', 'Kamers')
 
 pdfmetrics.registerFont(TTFont('Ubuntu', 'Ubuntu-Regular.ttf'))
 pdfmetrics.registerFont(TTFont('UbuntuBold', 'Ubuntu-Bold.ttf'))
